@@ -83,6 +83,7 @@ export default class Body extends React.Component {
           <div style={{ margin: '0 0 0 24px' }}>総額</div>
           <div>
             <input
+              pattern='\d*'
               type='number'
               onChange={this.totalAmountUpdate}
               value={this.props.totalAmount}
