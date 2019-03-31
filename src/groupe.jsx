@@ -35,6 +35,7 @@ export default class Groupe extends React.Component {
         <div>{`: ${this.props.groupe.bill}円`}</div>
         <div>
           <input
+            pattern='\d*'
             type='number'
             style={{
               textAlign: 'right',
