@@ -1,7 +1,8 @@
 {
   "scripts": {
     "start": "webpack-dev-server --open --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "deploy": "gh-pages -d docs"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
@@ -13,6 +14,8 @@
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
     "css-loader": "^2.1.0",
+    "file-loader": "^3.0.1",
+    "gh-pages": "^2.0.1",
     "json-loader": "^0.5.7",
     "lodash": "^4.17.11",
     "mobx": "^5.8.0",
@@ -23,13 +26,12 @@
     "react": "^16.7.0",
     "react-decoration": "^2.0.0",
     "react-dom": "^16.7.0",
+    "react-icons": "^3.4.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "url-loader": "^1.1.2",
     "webpack": "^4.28.2",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.14",
-    "file-loader": "^3.0.1",
-    "react-icons": "^3.4.0"
+    "webpack-dev-server": "^3.1.14"
   }
 }
