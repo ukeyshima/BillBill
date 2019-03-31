@@ -10,10 +10,10 @@ import { inject, observer } from 'mobx-react';
 }))
 @observer
 export default class Rate extends React.Component {
-  handleMouseDown = e => {        
+  handleMouseDown = e => {                
     this.frontElement = document.getElementById(`rate${this.props.num - 1}`);
     this.frontElementBoundingRect = this.frontElement.getBoundingClientRect();
-    this.barStartX = e.hasOwnProperty('changedTouches') ? e.changedTouches[0].pageX : e.pageX;
+    this.barStartX = ('changedTouches' in e) ? e.changedTouches[0].pageX : e.pageX;
     this.rate = this.props.rate;
     this.frontRate = this.props.groupes[this.props.num - 1].rate;
     window.addEventListener('mousemove', this.handleMouseMoveOrTouchMove);
@@ -21,9 +21,9 @@ export default class Rate extends React.Component {
     window.addEventListener('touchmove', this.handleMouseMoveOrTouchMove);
     window.addEventListener('touchend', this.handleMouseUpOrTouchEnd);
   };
-  handleMouseMoveOrTouchMove = e => {
+  handleMouseMoveOrTouchMove = e => {    
     const d =
-      ((e.hasOwnProperty('changedTouches') ? e.changedTouches[0].pageX : e.pageX) - this.barStartX) /
+      ((('changedTouches' in e)? e.changedTouches[0].pageX : e.pageX) - this.barStartX) /
       (this.props.windowSize.width - 70 - this.props.groupes.length - 1);
     this.props.updateGroupeRate(this.props.num - 1, this.frontRate + d);
     this.props.updateGroupeRate(this.props.num, this.rate - d);
