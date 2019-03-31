@@ -13,6 +13,8 @@ export default class Rate extends React.Component {
   handleMouseDown = e => {                
     this.frontElement = document.getElementById(`rate${this.props.num - 1}`);
     this.frontElementBoundingRect = this.frontElement.getBoundingClientRect();
+    this.currentElement=document.getElementById(`rate${this.props.num}`)
+    this.currentElementBoundingRect = this.currentElement.getBoundingClientRect();
     this.barStartX = ('changedTouches' in e) ? e.changedTouches[0].pageX : e.pageX;
     this.rate = this.props.rate;
     this.frontRate = this.props.groupes[this.props.num - 1].rate;
@@ -22,12 +24,15 @@ export default class Rate extends React.Component {
     window.addEventListener('touchend', this.handleMouseUpOrTouchEnd);
   };
   handleMouseMoveOrTouchMove = e => {    
+    const x=('changedTouches' in e)? e.changedTouches[0].pageX : e.pageX;
+    if(x>this.frontElementBoundingRect.left+2 && x<this.currentElementBoundingRect.right){    
     const d =
-      ((('changedTouches' in e)? e.changedTouches[0].pageX : e.pageX) - this.barStartX) /
+      (x - this.barStartX) /
       (this.props.windowSize.width - 70 - this.props.groupes.length - 1);
     this.props.updateGroupeRate(this.props.num - 1, this.frontRate + d);
     this.props.updateGroupeRate(this.props.num, this.rate - d);
     this.props.calculate();
+    }
   };
   handleMouseUpOrTouchEnd = () => {
     window.removeEventListener('mousemove', this.handleMouseMoveOrTouchMove);
