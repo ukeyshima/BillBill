@@ -1,0 +1,15 @@
+html {
+  background: linear-gradient(135deg, rgb(175, 254, 255), rgb(156, 158, 245));
+  height: 100%;
+}
+
+@font-face {
+  font-family: Regular;
+  src: url(./assets/font/NotoSansCJKjp-Regular.otf);
+}
+
+body {
+  font-family: Regular;
+  color: #fff;
+  margin: 0;
+}
